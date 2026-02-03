@@ -1,0 +1,45 @@
+{
+  "name": "sistema-chamados-backend",
+  "version": "0.1.0",
+  "description": "Backend Node.js em TypeScript usando NestJS",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "start:dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d dist/data-source.js",
+    "typeorm:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nestjs/common": "*",
+    "@nestjs/core": "*",
+    "@nestjs/jwt": "*",
+    "@nestjs/passport": "*",
+    "@nestjs/platform-express": "*",
+    "@nestjs/swagger": "*",
+    "@nestjs/typeorm": "*",
+    "bcrypt": "*",
+    "class-transformer": "*",
+    "class-validator": "*",
+    "passport": "*",
+    "passport-jwt": "*",
+    "pg": "*",
+    "reflect-metadata": "*",
+    "swagger-ui-express": "*",
+    "typeorm": "*"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jest": "*",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/passport-local": "^1.0.38",
+    "@types/supertest": "*",
+    "jest": "*",
+    "supertest": "*",
+    "ts-jest": "*",
+    "ts-node": "*",
+    "ts-node-dev": "*",
+    "typescript": "*"
+  }
+}
