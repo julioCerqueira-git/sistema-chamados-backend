@@ -12,6 +12,67 @@ Backend para o trabalho de Internet II, desenvolvido com NestJS, TypeORM e Postg
 - Validação forte de payloads com `ValidationPipe` e `class-validator`.
 - Documentação interativa via Swagger em `/api`.
 
+## Arquitetura e Estrutura de Pastas
+
+### Motivo da Escolha da Arquitetura
+- Modular por funcionalidade (Auth, Users, Tickets): facilita manutenção, evolução e isolamento de responsabilidades.
+- Injeção de dependências do NestJS (DI): torna serviços fáceis de testar e trocar implementações.
+- Segurança e controle de acesso com Guards/Strategies: JWT + RBAC simples e claro (admin/user).
+- Validação nativa com Pipes e DTOs: entradas consistentes e proteção contra payloads inválidos.
+- Persistência com TypeORM + PostgreSQL: entidades tipadas, migrations versionadas e consultas robustas.
+- Documentação com Swagger: visibilidade imediata das rotas e modelos, útil para integração.
+- Tipos centralizados em `src/types`: elimina `any`, melhora autocompletar e reduz erros em tempo de compilação.
+
+### Árvore de Pastas
+```
+.
+├─ .env.example
+├─ README.md
+├─ package.json
+├─ tsconfig.json
+├─ tsconfig.build.json
+└─ src
+   ├─ auth
+   │  ├─ dto
+   │  │  └─ login.dto.ts
+   │  ├─ admin.guard.ts
+   │  ├─ auth.controller.ts
+   │  ├─ auth.module.ts
+   │  ├─ auth.service.ts
+   │  ├─ jwt-auth.guard.ts
+   │  └─ jwt.strategy.ts
+   ├─ common
+   │  └─ filters
+   │     └─ all-exceptions.filter.ts
+   ├─ migrations
+   │  ├─ 1769958600000-InitialCreate.ts
+   │  ├─ 1769964700000-AddUserRole.ts
+   │  └─ 1769965000000-DropComments.ts
+   ├─ tickets
+   │  ├─ dto
+   │  │  ├─ create-ticket.dto.ts
+   │  │  └─ update-ticket.dto.ts
+   │  ├─ ticket.entity.ts
+   │  ├─ tickets.controller.ts
+   │  ├─ tickets.module.ts
+   │  └─ tickets.service.ts
+   ├─ types
+   │  ├─ auth.ts
+   │  └─ bcrypt.d.ts
+   ├─ users
+   │  ├─ dto
+   │  │  └─ create-user.dto.ts
+   │  ├─ user.entity.ts
+   │  ├─ users.controller.ts
+   │  ├─ users.module.ts
+   │  └─ users.service.ts
+   ├─ utils
+   │  └─ env.ts
+   ├─ app.module.ts
+   ├─ data-source.ts
+   └─ main.ts
+```
+
 ## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) (versão 18 ou superior)
