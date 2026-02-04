@@ -31,6 +31,8 @@ Backend para o trabalho de Internet II, desenvolvido com NestJS, TypeORM e Postg
 ├─ package.json
 ├─ tsconfig.json
 ├─ tsconfig.build.json
+├─ logs
+│  └─ app.log
 └─ src
    ├─ auth
    │  ├─ dto
@@ -42,8 +44,10 @@ Backend para o trabalho de Internet II, desenvolvido com NestJS, TypeORM e Postg
    │  ├─ jwt-auth.guard.ts
    │  └─ jwt.strategy.ts
    ├─ common
-   │  └─ filters
-   │     └─ all-exceptions.filter.ts
+   │  ├─ filters
+   │  │  └─ all-exceptions.filter.ts
+   │  └─ middlewares
+   │     └─ logger.middleware.ts
    ├─ migrations
    │  ├─ 1769958600000-InitialCreate.ts
    │  ├─ 1769964700000-AddUserRole.ts
