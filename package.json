@@ -9,7 +9,8 @@
     "build": "tsc -p tsconfig.build.json",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d dist/data-source.js",
     "typeorm:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@nestjs/common": "*",
