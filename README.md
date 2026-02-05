@@ -311,3 +311,7 @@ npm run test:coverage
 - Arquivo de configuração do Jest: [jest.config.js](sistema-chamados-backend/jest.config.js).
 - Scripts:
   - [package.json](sistema-chamados-backend/package.json) contém `test` e `test:coverage`.
+
+## Futuras Atualizações
+- Exibir autor do ticket na listagem de admin:
+  - GET /tickets para admin retornará cada ticket incluindo dados do usuário autor (nome/e-mail), mantendo a compatibilidade para usuários comuns.
