@@ -10,6 +10,7 @@ describe('TicketsController', () => {
   beforeEach(() => {
     ticketsService = {
       create: jest.fn(),
+      findAll: jest.fn(),
       findAllForUser: jest.fn(),
       findOne: jest.fn(),
       update: jest.fn(),
@@ -31,6 +32,13 @@ describe('TicketsController', () => {
     ticketsService.findAllForUser.mockResolvedValue([{ id: '1' }] as any);
     const result = await controller.findAll(req);
     expect(result).toEqual([{ id: '1' }]);
+  });
+
+  it('findAll deve retornar todos os tickets para admin', async () => {
+    const req = { user: { userId: 'admin-1', username: 'admin@b.com', role: 'admin' } } as AuthenticatedRequest;
+    ticketsService.findAll.mockResolvedValue([{ id: '1' }, { id: '2' }] as any);
+    const result = await controller.findAll(req);
+    expect(result).toEqual([{ id: '1' }, { id: '2' }]);
   });
 
   it('findOne deve delegar para service', async () => {

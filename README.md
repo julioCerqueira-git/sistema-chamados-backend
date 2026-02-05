@@ -200,9 +200,12 @@ Para as rotas abaixo, adicione o header de autorização:
         }
         ```
 
-4.  **Listar Meus Tickets**
+4.  **Listar Tickets**
     *   **Método:** `GET`
     *   **URL:** `http://localhost:3000/tickets`
+    *   **Comportamento:**
+        - Usuário comum: retorna apenas seus próprios tickets.
+        - Admin: retorna todos os tickets do sistema.
 
 5.  **Ver Detalhes do Ticket**
     *   **Método:** `GET`
@@ -230,6 +233,7 @@ Para as rotas abaixo, adicione o header de autorização:
   - A rota `GET /auth/me` retorna o usuário autenticado e sua `role`.
 - Papéis (roles):
   - Admin é configurado via `ADMIN_EMAILS` no `.env`. Faça login com o e-mail listado para emitir token com `role=admin`.
+  - Listagem: usuário vê apenas seus tickets; admin vê todos.
   - PUT de ticket: dono ou admin. DELETE de ticket: somente admin.
 - Validação:
   - `ValidationPipe` com `whitelist` e `forbidNonWhitelisted` rejeita campos desconhecidos.
@@ -304,6 +308,6 @@ npm run test:coverage
 - TicketsController: CRUD, checagem de dono/admin e erros — ver tickets.controller.spec.ts
 
 ### Configuração
-- Arquivo de configuração do Jest: [jest.config.js](file:///c:/Users/Julio%20Cesar/Documents/GitHub/sistema-chamados-backend/jest.config.js).
+- Arquivo de configuração do Jest: [jest.config.js](sistema-chamados-backend/jest.config.js).
 - Scripts:
-  - [package.json](file:///c:/Users/Julio%20Cesar/Documents/GitHub/sistema-chamados-backend/package.json) contém `test` e `test:coverage`.
+  - [package.json](sistema-chamados-backend/package.json) contém `test` e `test:coverage`.
