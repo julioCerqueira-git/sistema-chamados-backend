@@ -273,3 +273,37 @@ Depois rode:
 npm run build
 npm run migration:run
 ```
+
+## Testes Automatizados
+- Framework: Jest com ts-jest para TypeScript.
+- Local dos testes: pasta `test/` com arquivos `.spec.ts` (AuthService, UsersService, TicketsService, AuthController, UsersController, TicketsController).
+- Cobertura: relatórios em `coverage/` (text, lcov, json, html).
+
+### Executar Testes
+- Testes unitários:
+
+```bash
+npm run test
+```
+
+- Testes com cobertura:
+
+```bash
+npm run test:coverage
+```
+
+- Relatório HTML:
+  - Abra `coverage/lcov-report/index.html` no navegador para visualizar arquivos e percentuais.
+
+### O que é coberto
+- AuthService: valida credenciais e emissão de token com role (admin/user) — ver auth.service.spec.ts
+- UsersService: criação com hash de senha e consultas — ver users.service.spec.ts
+- TicketsService: CRUD principal, exceções e relacionamentos básicos — ver tickets.service.spec.ts
+- AuthController: register/login/me e respostas/erros — ver auth.controller.spec.ts
+- UsersController: criação de usuário — ver users.controller.spec.ts
+- TicketsController: CRUD, checagem de dono/admin e erros — ver tickets.controller.spec.ts
+
+### Configuração
+- Arquivo de configuração do Jest: [jest.config.js](file:///c:/Users/Julio%20Cesar/Documents/GitHub/sistema-chamados-backend/jest.config.js).
+- Scripts:
+  - [package.json](file:///c:/Users/Julio%20Cesar/Documents/GitHub/sistema-chamados-backend/package.json) contém `test` e `test:coverage`.
