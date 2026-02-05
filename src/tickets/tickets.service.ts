@@ -27,6 +27,12 @@ export class TicketsService {
     });
   }
 
+  async findAll(): Promise<Ticket[]> {
+    return this.ticketRepository.find({
+      order: { createdAt: 'DESC' },
+    });
+  }
+
   async findOne(id: string): Promise<Ticket> {
     const ticket = await this.ticketRepository.findOne({
       where: { id },

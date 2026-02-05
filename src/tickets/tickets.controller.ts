@@ -35,6 +35,9 @@ export class TicketsController {
 
   @Get()
   findAll(@Request() req: AuthenticatedRequest) {
+    if (req.user.role === 'admin') {
+      return this.ticketsService.findAll();
+    }
     return this.ticketsService.findAllForUser(req.user.userId);
   }
 

@@ -32,6 +32,13 @@ describe('TicketsService', () => {
     expect(Array.isArray(list)).toBe(true);
   });
 
+  it('findAll retorna todos os tickets ordenados', async () => {
+    repo.find.mockResolvedValue([{ id: '1' }, { id: '2' }] as any);
+    const list = await service.findAll();
+    expect(Array.isArray(list)).toBe(true);
+    expect(list.length).toBe(2);
+  });
+
   it('findOne lança NotFoundException quando não encontra', async () => {
     repo.findOne.mockResolvedValue(null as any);
     await expect(service.findOne('x')).rejects.toBeInstanceOf(NotFoundException);
